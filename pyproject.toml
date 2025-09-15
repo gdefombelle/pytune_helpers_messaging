@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pytune-helpers-messaging"
+version = "0.1.0"
+description = "Messaging helpers for PyTune (email via aiosmtplib, Celery/RabbitMQ utils)."
+authors = ["Gabriel de Fombelle <gabriel.de.fombelle@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "pytune_helpers_messaging"}]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+aiosmtplib = "^1.1.7"
+celery = "^5.5.0"
+kombu = "^5.5.0"
+# Internal optional deps (dev mode within monorepo)
+simple-logger = { path = "../../packages/simple_logger", develop = true }
+pytune-configuration = { path = "../../packages/pytune_configuration", develop = true }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+mypy = "^1.11.1"
+ruff = "^0.6.8"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
