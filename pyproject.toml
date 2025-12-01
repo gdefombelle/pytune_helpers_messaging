@@ -1,3 +1,9 @@
+[project]
+name = "pytune_helpers_messaging"
+version = "0.0.0"
+description = "PyTune messaging helper utilities"
+requires-python = ">=3.12"
+
 [tool.poetry]
 name = "pytune-helpers-messaging"
 version = "0.1.0"
@@ -8,13 +14,14 @@ readme = "README.md"
 packages = [{ include = "pytune_helpers_messaging"}]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<3.13"
+python = ">=3.12,<4.0"
 aiosmtplib = "^1.1.7"
 celery = "^5.5.0"
 kombu = "^5.5.0"
 # Internal optional deps (dev mode within monorepo)
-simple-logger = { path = "../../packages/simple_logger", develop = true }
-pytune-configuration = { path = "../../packages/pytune_configuration", develop = true }
+
+pytune_configuration = { git = "https://github.com/gdefombelle/pytune_configuration.git", branch = "main"}
+simple_logger = { git = "https://github.com/gdefombelle/simple_logger.git", branch = "main"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.0"
