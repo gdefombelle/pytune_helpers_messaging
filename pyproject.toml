@@ -2,7 +2,7 @@
 name = "pytune_helpers_messaging"
 version = "0.0.0"
 description = "PyTune messaging helper utilities"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 
 [tool.poetry]
 name = "pytune-helpers-messaging"
@@ -14,7 +14,7 @@ readme = "README.md"
 packages = [{ include = "pytune_helpers_messaging"}]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<4.0"
+python = ">=3.12,<3.13"
 aiosmtplib = "^1.1.7"
 celery = "^5.5.0"
 kombu = "^5.5.0"
