@@ -1,33 +1,37 @@
 [project]
 name = "pytune_helpers_messaging"
-version = "0.0.0"
-description = "PyTune messaging helper utilities"
-requires-python = ">=3.12,<3.13"
-
-[tool.poetry]
-name = "pytune-helpers-messaging"
 version = "0.1.0"
-description = "Messaging helpers for PyTune (email via aiosmtplib, Celery/RabbitMQ utils)."
-authors = ["Gabriel de Fombelle <gabriel.de.fombelle@gmail.com>"]
-license = "MIT"
+description = "Messaging helpers for PyTune (email via aiosmtplib, Celery/RabbitMQ utilities)"
+requires-python = ">=3.12,<3.13"
 readme = "README.md"
-packages = [{ include = "pytune_helpers_messaging"}]
+license = "MIT"
 
-[tool.poetry.dependencies]
-python = ">=3.12,<3.13"
-aiosmtplib = "^1.1.7"
-celery = "^5.5.0"
-kombu = "^5.5.0"
-# Internal optional deps (dev mode within monorepo)
+authors = [
+    { name = "Gabriel de Fombelle", email = "gabriel.de.fombelle@gmail.com" }
+]
 
-pytune_configuration = { git = "https://github.com/gdefombelle/pytune_configuration.git", branch = "main"}
-simple_logger = { git = "https://github.com/gdefombelle/simple_logger.git", branch = "main"}
+dependencies = [
+    "aiosmtplib>=1.1.7",
+    "celery>=5.5.0",
+    "kombu>=5.5.0",
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.0"
-mypy = "^1.11.1"
-ruff = "^0.6.8"
+    # internes — résolus AUTOMATIQUEMENT via workspace root
+    "pytune_configuration",
+    "simple_logger",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "mypy>=1.11.1",
+    "ruff>=0.6.8",
+]
+
+# ❌ AUCUN tool.uv.sources ici ! (sinon uv pète)
 
 [build-system]
-requires = ["poetry-core>=1.9.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pytune_helpers_messaging"]
